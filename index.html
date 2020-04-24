@@ -31,20 +31,24 @@
       <div class="container-fluid input-area">
         <div class="row">
           <div class="col-12 text-center">
-              <input class="input rounded shadow" type="text" placeholder="Name...">
-              <button class="btn1 btn-sm btn-info" type="submit" onsubmit="">Create</button>
+            <form class="w-25 m-auto text-center" onsubmit="addKitten(event)">
+              <div class="form-group text-center">
+                <input class="form-control input rounded shadow" id="catName" name="catName" type="text" placeholder="Name..." />
+              </div>
+              <button class="btn1 btn-sm btn-info" type="submit">Create</button>
+            </form>
           </div>
         </div>
       </div>
 
-      <div class="container-fluid main">
+      <div class="container-fluid template main">
         <div class="row">
           <div class="col-2 cat shadow mx-auto text-center">
             <img class="img-fluid" id="cat-image" src="cat.jpeg" alt="Cat">
             <p class="cat-name"><b>Name: </b><span id="cat-name">--</span></p>
             <p class="cat-mood"><b>Mood: </b><span id="cat-mood">--</span></p>
             <p class="cat-happiness">Happiness: <span id="cat-happiness">0</span></p>
-            <button class="btn-pet btn-sm btn-info" onclick="petCat()">Pet <span id="cat-name">--</span></button>
+            <button class="btn-pet btn-sm btn-info" onclick="petCat()">Pet</button>
             <button class="btn-dose btn-sm btn-danger" onclick="giveCatnip()">Give Catnip</button>
           </div>
         </div>
