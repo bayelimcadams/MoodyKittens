@@ -48,35 +48,3 @@ body {
   font-size: 110%;
   margin-top: 15px;
 }
-
-
-/* Visualization
-
-- Users must have a form where they enter in at minimum the name of a kitten
-- A Kitten's name and mood must be visible for the user 
-- A custom Google Font must be added
-- Kittens are visible when the page reloads
-- A Kitten's mood must affect visually the apperance of the kitten
-
-Functionality
-
-- Add Kitten form clears when submitted
-- Add Kitten form submission does not reload the page 
-- Kittens are stored in local storage. 
-- Kittens can be deleted
-- Kittens have at least two buttons that affect the kitten's mood in different ways
-- Kitten's moods persist through page reloads
-
-Step by Step Guide
-
-1. Create a form used to add a Kitten
-1. Handle the form submission
-  - Prevent the page from reloading when submitting the form
-  - Pull the form data to get a new kitten and give that kitten an id
-  - Add the new kitten to the kittens array
-  - Reset the form
-  - Save the kittens list
-  - Draw the kittens list
-1. Handle Page Refresh
-  - Load the kittens list
-  - Draw the kittens list */

@@ -9,14 +9,18 @@
     <link rel="stylesheet" href="style.css">
     <title>MoodyKittens</title>
   </head>
+
   <style>
+
     body {
+
   background-image: url('bg.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 110%;
 }
   </style>
+
   <body>
     
 
@@ -27,13 +31,15 @@
     </header>
 
 
-    <main>
-      <div class="container-fluid input-area">
-        <div class="row">
+    <main class="container-fluid">
+
+      <div class="input-area">
+        <div class="row addcat">
           <div class="col-12 text-center">
-            <form class="w-25 m-auto text-center" onsubmit="addKitten(event)">
+            <form class="w-25 m-auto text-center" onsubmit="app.addCat(event)">
               <div class="form-group text-center">
-                <input class="form-control input rounded shadow" id="catName" name="catName" type="text" placeholder="Name..." />
+                <label for="name"></label>
+                <input class="form-control input rounded shadow" id="nameInput" name="name" type="text" placeholder="Name..." required>
               </div>
               <button class="btn1 btn-sm btn-info" type="submit">Create</button>
             </form>
@@ -41,24 +47,27 @@
         </div>
       </div>
 
-      <div class="container-fluid template main">
-        <div class="row">
+      <div class="main-area">
+        <div class="row" id="cats">
           <div class="col-2 cat shadow mx-auto text-center">
+            <button type="button" class="w-100 text-right close" onclick="app.deleteCat(id)"><span>&times;</span></button>
             <img class="img-fluid" id="cat-image" src="cat.jpeg" alt="Cat">
             <p class="cat-name"><b>Name: </b><span id="cat-name">--</span></p>
             <p class="cat-mood"><b>Mood: </b><span id="cat-mood">--</span></p>
             <p class="cat-happiness">Happiness: <span id="cat-happiness">0</span></p>
-            <button class="btn-pet btn-sm btn-info" onclick="petCat()">Pet</button>
-            <button class="btn-dose btn-sm btn-danger" onclick="giveCatnip()">Give Catnip</button>
+            <button class="btn-pet btn-sm btn-info" onclick="app.petCat(id)">Pet</button>
+            <button class="btn-dose btn-sm btn-danger" onclick="app.doseCat(id)">Give Catnip</button>
           </div>
         </div>
       </div>
+
     </main>
 
 
 
       <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"></script>
@@ -68,7 +77,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+    <script src="./app.js"></script>
+    <!-- <script src="./main.js" type="module"></script> -->
     
   </body>
 
