@@ -1,10 +1,51 @@
 
+                      NOTE LocalStorage
 
-/**
- * Stores the list of kittens
- * @type {Kitten[]}
- */
-let kittens = [];
+
+
+let state = {
+  /** @type {Cat[]} */
+  cats: [],
+};
+
+
+//NOTE this method will get the lists from local storage at the start of the app
+function loadState() {
+
+  let data = JSON.parse(localStorage.getItem("MoodyKittens"));
+
+  if (data) {
+
+      data.lists = data.lists.map(l =>{
+      let list = new List(l);
+      list.tasks = list.tasks.map(t => new Task(t))
+      return list;
+
+    });
+
+    state = data;
+  }
+}
+loadState();
+
+class Store {
+  /**
+   * Provides access to application state data
+   */
+  get State() {
+    return state;
+  }
+
+  //NOTE call saveState everytime you change the state in any way
+  saveState() {
+    localStorage.setItem("Checkpoint-3", JSON.stringify(state));
+  }
+}
+
+
+
+
+
 /**
  * Called when submitting the new Kitten Form
  * This method will pull data from the form
@@ -21,21 +62,9 @@ function addKitten(event) {
 
   document.getElementById("cat-name").textContent =
   document.getElementById("catName").value;
-  
-//   return /*html*/`
-//   <div class="container-fluid main">
-//   <div class="row">
-//     <div class="col-2 cat shadow mx-auto text-center">
-//       <img class="img-fluid" id="cat-image" src="cat.jpeg" alt="Cat">
-//       <p class="cat-name"><b>Name: </b><span id="cat-name">--</span></p>
-//       <p class="cat-mood"><b>Mood: </b><span id="cat-mood">--</span></p>
-//       <p class="cat-happiness">Happiness: <span id="cat-happiness">0</span></p>
-//       <button class="btn-pet btn-sm btn-info" onclick="petCat()">Pet <span id="cat-name">--</span></button>
-//       <button class="btn-dose btn-sm btn-danger" onclick="giveCatnip()">Give Catnip</button>
-//     </div>
-//   </div>
-// </div>
-//   `
+
+  cats.push(newCat)
+  saveState()
 
 }
 
@@ -115,9 +144,15 @@ function generateId() {
 
 
 
+                      NOTE New Cat Info
 
-let cat = {
-  // name: "Mr. Snibbley",
+// function getStarted() {
+//   document.getElementById("welcome").remove();
+//   drawKittens();
+// }
+
+let myNewCatInfo = {
+  
   happinessCount: 0,
   dosed: false,
   moods: [
@@ -141,10 +176,7 @@ let cat = {
 }
 
 
-function getStarted() {
-  document.getElementById("welcome").remove();
-  drawKittens();
-}
+
 
 
 
